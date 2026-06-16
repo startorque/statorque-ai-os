@@ -21,9 +21,9 @@ async function main(): Promise<void> {
     });
 
     logger.info('✓ Task executed successfully');
-    logger.info('Result:', taskResult);
+    logger.info(`Result: ${JSON.stringify(taskResult)}`);
   } catch (error) {
-    logger.error('Fatal error:', error);
+    logger.error(`Fatal error: ${error instanceof Error ? error.message : String(error)}`);
     process.exit(1);
   }
 }
