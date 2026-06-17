@@ -37,7 +37,7 @@ export abstract class BaseAgent {
     return this.config.version;
   }
 
-  abstract async execute(task: Task): Promise<unknown>;
+  abstract execute(task: Task): Promise<unknown>;
 
   protected async executeStep(
     stepId: string,

@@ -1,5 +1,4 @@
 import { ExecutionEngine } from '../execution/engine';
-import { BaseAgent } from '../agents/base-agent';
 import { AgentRegistry } from '../agents/registry';
 import logger from '../utils/logger';
 import { Task } from './router';

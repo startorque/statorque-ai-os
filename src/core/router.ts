@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Kernel } from './kernel';
-import { AgentRegistry } from '../agents/registry';
 import logger from '../utils/logger';
 
 export interface Task {
@@ -18,12 +17,10 @@ export interface TaskResult {
 
 export class Router {
   private kernel: Kernel;
-  private registry: AgentRegistry;
 
   constructor(kernel: Kernel) {
     this.kernel = kernel;
-    this.registry = new AgentRegistry();
-    logger.info('Router initialized with kernel and agent registry');
+    logger.info('Router initialized with kernel');
   }
 
   async route(task: Task): Promise<TaskResult> {

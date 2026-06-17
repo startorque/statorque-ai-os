@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.get('/api/health', (req: Request, res: Response) => {
+app.get('/api/health', (_req: Request, res: Response) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
@@ -18,7 +18,7 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-app.get('/api/status', (req: Request, res: Response) => {
+app.get('/api/status', (_req: Request, res: Response) => {
   res.json({
     system: 'StarTorque AI OS',
     version: '1.0.0',
@@ -33,7 +33,7 @@ app.get('/api/status', (req: Request, res: Response) => {
   });
 });
 
-app.get('/api/logs', (req: Request, res: Response) => {
+app.get('/api/logs', (_req: Request, res: Response) => {
   res.json({
     logs: [
       { level: 'info', message: 'System started', timestamp: new Date().toISOString() },
@@ -43,7 +43,7 @@ app.get('/api/logs', (req: Request, res: Response) => {
   });
 });
 
-app.get('/api/metrics', (req: Request, res: Response) => {
+app.get('/api/metrics', (_req: Request, res: Response) => {
   res.json({
     tasksProcessed: 42,
     successfulExecutions: 39,
@@ -54,7 +54,7 @@ app.get('/api/metrics', (req: Request, res: Response) => {
   });
 });
 
-app.get('*', (req: Request, res: Response) => {
+app.get('*', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 

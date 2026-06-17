@@ -23,11 +23,17 @@ export class ExecutionEngine {
 
     logger.info(`[ExecutionEngine] Starting execution: ${executionId}`);
 
-    const execution = {
+    const execution: {
+      agentName: string;
+      taskId: string;
+      startTime: number;
+      endTime?: number;
+      status: 'pending' | 'running' | 'completed' | 'failed';
+    } = {
       agentName: agent.getName(),
       taskId: executionId,
       startTime,
-      status: 'running' as const
+      status: 'running'
     };
 
     this.executionHistory.push(execution);
@@ -54,7 +60,7 @@ export class ExecutionEngine {
     }
   }
 
-  private createExecutionPlan(agent: BaseAgent, task: Task): ExecutionPlan {
+  private createExecutionPlan(agent: BaseAgent, _task: Task): ExecutionPlan {
     return {
       agentName: agent.getName(),
       steps: [
